@@ -1,7 +1,7 @@
 # beats-me
 
 Player for mixtapes made in `../analyze-this` and for any local music.
-Playback, tempo analysis and the now-playing UI live in `../shared_core`.
+Playback, tempo analysis and the now-playing UI live in `../core-analyze-beats`.
 
     flutter pub get && flutter test && flutter run -d windows
 
@@ -20,7 +20,7 @@ Developer options › turn on **Wireless debugging** (phone and PC on the same W
 The script finds the phone by itself: it tries the last-used address, then mDNS
 discovery, and asks you to pair only if both fail. If more than one device is
 connected, it asks which one to use. It rebuilds the arm64 release APK only when
-`lib`, `android`, the pubspec files or `../shared_core` changed, and it increments
+`lib`, `android`, the pubspec files or `../core-analyze-beats` changed, and it increments
 the build number on each build. Its state is kept in `.deploy\`, which is gitignored.
 
 ## Features
