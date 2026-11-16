@@ -12,6 +12,7 @@ import 'nav.dart';
 import 'screens/home_shell.dart';
 import 'screens/mixtape_screen.dart';
 import 'services/app_state.dart';
+import 'services/cast_controller.dart';
 import 'services/media_session.dart';
 import 'services/theme_settings.dart';
 
@@ -38,6 +39,8 @@ Future<void> main() async {
     ChangeNotifierProvider<AppState>.value(value: state),
     ChangeNotifierProvider<PlaybackController>.value(value: state),
     ChangeNotifierProvider<ThemeSettings>.value(value: themeSettings),
+    ChangeNotifierProvider<CastController>(create: (_) => CastController(state)),
+
   ], child: BeatsMeApp(state: state)));
 }
 

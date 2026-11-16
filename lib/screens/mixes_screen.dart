@@ -5,6 +5,7 @@ import 'package:shared_core/screens/mix_icon.dart';
 import 'package:shared_core/services/mix_icon_spec.dart';
 import 'package:shared_core/screens/step_icon.dart';
 import 'package:shared_core/screens/now_playing_screen.dart';
+import 'cast_picker.dart';
 
 import '../services/app_state.dart';
 import '../services/mixes.dart';
@@ -116,7 +117,7 @@ class _MixesScreenState extends State<MixesScreen> {
       await s.playMix();
       await s.noteMixPlayed(m.file);
       if (mounted) setState(() => m.lastPlayed = DateTime.now());
-      navigator.push(MaterialPageRoute(builder: (_) => const NowPlayingScreen()));
+      navigator.push(MaterialPageRoute(builder: (_) => const NowPlayingScreen(extraActions: [CastButton()])));
     } catch (e) {
       messenger.showSnackBar(SnackBar(content: Text('Could not play "${m.name}": $e')));
     }
@@ -208,7 +209,7 @@ class _MixesScreenState extends State<MixesScreen> {
                 ? null
                 : () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => const NowPlayingScreen()),
+                    MaterialPageRoute(builder: (_) => const NowPlayingScreen(extraActions: [CastButton()])),
                   ),
           ),
           IconButton(

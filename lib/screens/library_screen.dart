@@ -6,6 +6,7 @@ import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 import 'package:shared_core/screens/mini_player.dart';
 import 'package:shared_core/screens/now_playing_screen.dart';
+import 'cast_picker.dart';
 import 'package:shared_core/screens/rating_bar.dart';
 import 'package:shared_core/screens/track_art.dart';
 import 'package:shared_core/services/library_service.dart';
@@ -340,7 +341,7 @@ class _TrackTile extends StatelessWidget {
       ]),
       onTap: () {
         s.play(path);
-        Navigator.push(context, MaterialPageRoute(builder: (_) => const NowPlayingScreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => const NowPlayingScreen(extraActions: [CastButton()])));
       },
       onLongPress: () => showRateSheet(context, s, path),
     );
@@ -506,7 +507,7 @@ class MixListScreen extends StatelessWidget {
                     onPressed: () async {
                       final nav = Navigator.of(context);
                       await s.playMix();
-                      nav.push(MaterialPageRoute(builder: (_) => const NowPlayingScreen()));
+                      nav.push(MaterialPageRoute(builder: (_) => const NowPlayingScreen(extraActions: [CastButton()])));
                     },
                   ),
                 ),
@@ -537,7 +538,7 @@ class MixListScreen extends StatelessWidget {
                           s.setMode(PlayMode.mix);
                           await s.play(path);
                         }
-                        nav.push(MaterialPageRoute(builder: (_) => const NowPlayingScreen()));
+                        nav.push(MaterialPageRoute(builder: (_) => const NowPlayingScreen(extraActions: [CastButton()])));
                       },
                       trailing: Row(mainAxisSize: MainAxisSize.min, children: [
                         IconButton(
